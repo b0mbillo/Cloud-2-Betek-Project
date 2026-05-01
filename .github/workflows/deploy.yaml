@@ -1,0 +1,54 @@
+on:
+    #push:
+    #    branches:
+    #        - main
+    workflow_dispatch:
+        inputs:
+            destroy:
+                description: 'Destroy infrastructure after deployment'
+                required: false
+                default: 'false'
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./terraform
+        steps:
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v2 # usa acciones prefabricadas
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: us-east-1
+                
+            - name: Install terraform
+              uses: hashicorp/setup-terraform@v1
+              with:
+                  terraform_version: 1.5.0
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Terraform Init
+              run: terraform init 
+
+            - name: Terraform Plan
+              run: terraform plan -out=tfplan
+            
+            - name: Terraform Apply
+              if : ${{ github.event.inputs.destroy != 'true' }}
+              run: terraform apply -auto-approve tfplan
+
+            - name: Terraform Output
+              run: terraform output
+
+            - name: Terraform Destroy
+              if: ${{ github.event.inputs.destroy == 'true' && github.event_name == 'workflow_dispatch' }}
+              run: |
+                terraform plan -destroy
+                terraform destroy 
+
+            - name: Show url
+              run: 
+                echo "URL: $(terraform output -raw website_url)" >> "$GITHUB_STEP_SUMMARY"
