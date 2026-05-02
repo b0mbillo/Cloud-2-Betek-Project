@@ -50,5 +50,5 @@ jobs:
                 terraform destroy 
 
             - name: Show url
-              run: 
+              run: |
                 echo "URL: $(terraform output -raw website_url)" >> "$GITHUB_STEP_SUMMARY"
