@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaCloud - Centro de Soporte Técnico</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="index-style.css">
+    <script src="../api-config.js"></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">☁️</div>
+            <h1>Centro de Soporte Técnico NexaCloud</h1>
+            <p>
+                Plataforma de soporte técnico escalable construida en AWS con API Gateway y Lambdas serverless. 
+                Crea tickets, obtén respuestas rápidas y gestiona todo tu proceso desde una consola inteligente.
+            </p>
+            <div class="cta-buttons">
+                <a href="../form/form.html" class="btn-large primary">📝 Crear Ticket de Soporte</a>
+                <a href="../login/login.html" class="btn-large secondary">🔐 Panel de Soporte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTAINER -->
+    <div class="container">
+        <!-- FEATURES -->
+        <section class="features" id="features">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Arquitectura Serverless</h3>
+                <p>API Gateway + Lambdas en AWS para escalabilidad automática sin preocupaciones de infraestructura.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Dashboard en Tiempo Real</h3>
+                <p>Visualiza estadísticas y manage todos tus tickets desde una consola intuitiva y responsive.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h3>API RESTful Completa</h3>
+                <p>Integra fácilmente con tus sistemas existentes a través de nuestra API Gateway documentada.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Multi-dispositivo</h3>
+                <p>Accede desde cualquier dispositivo: desktop, tablet o móvil, siempre sincronizado en tiempo real.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Autenticación JWT</h3>
+                <p>Seguridad de nivel empresarial con tokens JWT y autenticación integrada en Lambdas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Escalabilidad Infinita</h3>
+                <p>Soporta millones de solicitudes simultáneas sin necesidad de provisionar infraestructura.</p>
+            </div>
+        </section>
+
+        <!-- STEPS -->
+        <section class="steps" id="how-it-works">
+            <h2>¿Cómo Funciona?</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Crear Ticket</h4>
+                    <p>Haz clic en "Crear Ticket" y completa el formulario con los detalles de tu problema.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Recibe Confirmación</h4>
+                    <p>Te proporcionaremos un ID único para rastrear tu ticket en cualquier momento.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Equipo Investiga</h4>
+                    <p>Nuestro equipo asignará un técnico que trabajará en resolver tu problema.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Seguimiento</h4>
+                    <p>Monitorea el progreso en tiempo real en tu panel de cliente.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Resolución</h4>
+                    <p>Una vez resuelto, podrás cerrar el ticket o dejarnos tu feedback.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>Soporte Continuo</h4>
+                    <p>Estamos aquí para ayudarte con cualquier nueva consulta o problema.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats">
+            <h2>Rendimiento y Confiabilidad</h2>
+            <div class="stats-grid">
+                <div>
+                    <div class="stat">99.99%</div>
+                    <div class="stat-label">SLA AWS Lambda</div>
+                </div>
+                <div>
+                    <div class="stat">&lt;500ms</div>
+                    <div class="stat-label">Latencia Promedio</div>
+                </div>
+                <div>
+                    <div class="stat">∞</div>
+                    <div class="stat-label">Escalabilidad</div>
+                </div>
+                <div>
+                    <div class="stat">24/7</div>
+                    <div class="stat-label">Disponibilidad</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq" id="faq">
+            <h2>Preguntas Frecuentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Cómo funciona la integración con AWS?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Nuestro sistema está construido en AWS utilizando:
+                    <br>- <strong>API Gateway</strong>: Enrutamiento inteligente de solicitudes
+                    <br>- <strong>Lambdas</strong>: Funciones serverless para cada operación (login, crear ticket, gestionar tickets)
+                    <br>- <strong>JWT</strong>: Autenticación segura entre cliente y backend
+                    <br>Puedes consultar el archivo <code>api-config.js</code> para configurar los endpoints.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Cómo configuro los endpoints del API?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Sí, puedes adjuntar archivos (capturas de pantalla, logs, etc.) con un tamaño máximo de 5MB por archivo. Simplemente usa el área de drag & drop en el formulario de creación de tickets.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Qué endpoints Lambda tengo que crear?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Necesitas crear Lambdas para estas operaciones:
+                    <br>1. <strong>POST /auth/login</strong> - Autenticar usuario y devolver JWT
+                    <br>2. <strong>POST /tickets/create</strong> - Crear nuevo ticket
+                    <br>3. <strong>GET /tickets/list</strong> - Listar todos los tickets
+                    <br>4. <strong>GET /tickets/:id</strong> - Obtener ticket por ID
+                    <br>5. <strong>PUT /tickets/:id/update</strong> - Actualizar ticket
+                    <br>6. <strong>DELETE /tickets/:id/delete</strong> - Eliminar ticket
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Cómo manejo la autenticación en el frontend?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    La autenticación se realiza automáticamente:
+                    <br>1. El usuario hace login a través del formulario
+                    <br>2. El Lambda de autenticación valida credenciales y devuelve un JWT
+                    <br>3. El token se almacena en <code>localStorage</code> como <code>authToken</code>
+                    <br>4. Todas las solicitudes posteriores incluyen el token en el header <code>Authorization: Bearer {token}</code>
+                    <br>5. Si el token expira, se redirige automáticamente al login
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>¿Cómo depliego las Lambdas en AWS?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Pasos básicos para desplegar:
+                    <br>1. Crea una función Lambda para cada endpoint en AWS Console
+                    <br>2. Configura el API Gateway para rutear las solicitudes
+                    <br>3. Asegúrate de que el Lambda devuelve JSON con estructura consistente
+                    <br>4. Habilita CORS en el API Gateway para solicitudes desde el frontend
+                    <br>5. Actualiza <code>API_CONFIG.BASE_URL</code> en <code>api-config.js</code> con tu URL de API Gateway
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <section style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.1)); border-radius: 1rem; margin: 4rem 0;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">¿Listo para Comenzar?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Crea tu primer ticket ahora y experimenta nuestro servicio de soporte de clase mundial.
+            </p>
+            <a href="../form/form.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                📝 Crear Mi Primer Ticket
+            </a>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 NexaCloud. Plataforma de Soporte Técnico Serverless en AWS.</p>
+        <p>
+            Construido con <strong>AWS API Gateway</strong> + <strong>Lambdas</strong> | 
+            Frontend: HTML5 + CSS3 + Vanilla JS | 
+            <a href="#architecture">Arquitectura</a>
+        </p>
+    </footer>
+
+    <script>
+        async function loadNavbar() {
+            const container = document.getElementById('navbar-container');
+            if (!container) {
+                return;
+            }
+
+            try {
+                const response = await fetch('index-nav.html');
+                container.innerHTML = await response.text();
+            } catch (error) {
+                console.error('No se pudo cargar index-nav.html', error);
+            }
+        }
+
+        loadNavbar();
+
+        function toggleFAQ(element) {
+            const question = element;
+            const answer = element.nextElementSibling;
+            
+            // Cerrar todos los demás
+            document.querySelectorAll('.faq-question.active').forEach(q => {
+                if (q !== question) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle actual
+            question.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+
+        // Animación suave para scroll con delegación (incluye navbar cargado dinámicamente)
+        document.addEventListener('click', function(e) {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) {
+                return;
+            }
+
+            const href = anchor.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
