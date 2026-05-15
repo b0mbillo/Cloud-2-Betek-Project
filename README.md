@@ -265,6 +265,8 @@ const newTicket = await createTicket(ticketData);
 
 ## 📞 Soporte y Contacto
 
+Brando Yesid Montoya Jaramillo - [linkedin.com/in/brando-montoya](https://www.linkedin.com/in/brando-montoya/)
+
 ---
 **Stack**: HTML5 + CSS3 + Vanilla JS + AWS Lambda + API Gateway + DynamoDB + S3 + Terraform
 
