@@ -5,8 +5,9 @@ Cloud-2-Betek-Project/
 │   └── workflows/
 │       └── deploy.yaml
 ├── doc/
-│   └── proyecto-betek.drawio
-├── terraform/
+│   ├── proyecto-betek.drawio         
+│   └── tree.txt                      
+├── terraform/                        
 │   ├── main.tf
 │   ├── provider.tf
 │   ├── terraform.tfvars
@@ -25,6 +26,21 @@ Cloud-2-Betek-Project/
 │       └── S3/
 │           ├── main.tf
 │           └── variables.tf
-└── webpage/
-    ├── index.html
-    └── style.css
+└── webpages/
+    ├── api-config.js                
+    ├── style.css                    
+    │   ├── index.html               
+    │   ├── index-style.css          
+    │   └── index-nav.html           
+    ├── login/
+    │   ├── login.html               
+    │   ├── login-style.css          
+    │   └── login-nav.html           
+    ├── form/
+    │   ├── form.html                
+    │   ├── form-style.css           
+    │   └── form-nav.html            
+    └── support/
+        ├── support.html             
+        ├── support-style.css        
+        └── support-nav.html         
