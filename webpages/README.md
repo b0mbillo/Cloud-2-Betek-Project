@@ -20,19 +20,22 @@
 - Sombras sutiles con hover effects
 - Gradientes lineales en headers y botones
 
-
 ## 📄 Páginas del Sistema
 
 ### 1️⃣ **Inicio** (`index.html`)
 **Propósito**: Página principal con introducción al sistema de soporte (entrypoint en root con redirección a `index/index.html`)
 
 ### 2️⃣ **Login** (`login/login.html`)
+**Propósito**: Autenticación segura con AWS Cognito
 
 ### 3️⃣ **Formulario de Tickets** (`form/form.html`)
-**Propósito**: Permitir clientes crear tickets de soporte
+**Propósito**: Permitir a cualquiera crear tickets de soporte
+**Autenticación**: ❌ **NO REQUERIDA** - Acceso público
 
 ### 4️⃣ **Panel de Control** (`support/support.html`)
 **Propósito**: CRUD completo de tickets para equipo de soporte
+**Autenticación**: ✅ **REQUERIDA** - Solo usuarios con Cognito
+---
 
 ## 🎯 Estados de Tickets
 

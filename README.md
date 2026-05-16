@@ -1,11 +1,11 @@
 # Cloud-2-Betek-Project
 Proyecto 2 para el bootcamp Cloud 2 por parte de Betek
 
-## Project Structure
-
 # NexaCloud - Centro de Soporte Técnico Serverless
 
 Plataforma de soporte técnico construida en **AWS con Lambdas** y **API Gateway**, con frontend en **HTML5 + CSS3 + Vanilla JavaScript**.
+
+**Stack**: HTML5 + CSS3 + Vanilla JS + AWS Lambda + API Gateway + DynamoDB + S3 + Terraform
 
 ## 🏗️ Arquitectura
 
@@ -29,12 +29,10 @@ Plataforma de soporte técnico construida en **AWS con Lambdas** y **API Gateway
         ┌─────────────────────────────────────────┐
         │         AWS Lambda Functions            │
         ├─────────────────────────────────────────┤
-        │ POST /auth/login                        │
         │ POST /tickets/create                    │
         │ GET  /tickets/list                      │
         │ GET  /tickets/:id                       │
         │ PUT  /tickets/:id/update                │
-        │ DELETE /tickets/:id/delete              │
         └─────────────────────────────────────────┘
                           ↓
             ┌─────────────────────────────┐
@@ -139,14 +137,33 @@ Cloud-2-Betek-Project/
   - 🗑️ Eliminar tickets
   - ➕ Crear nuevos tickets manualmente
 
-## 🔗 API Gateway Endpoints
+## Autenticación
+
+**⭐ AUTENTICACIÓN**: AWS Cognito se usa **solo para acceder al panel de soporte**.  
+> Para crear/enviar tickets **NO se requiere autenticación**.
+
+### 🔐 Política de Autenticación
+
+| Funcionalidad | Requiere Cognito | Acceso |
+|---|---|---|
+| 📝 Crear Ticket | ❌ No | Público - Cualquiera |
+| 📋 Ver Panel de Soporte | ✅ Sí | Solo usuarios autenticados |
+| 🔐 Login | ✅ Sí | Para acceder al panel |
+
+## 🔗 API Gateway
 
 Todos los endpoints requieren:
 - **CORS habilitado** para solicitudes desde el frontend
 - **JWT en header Authorization**: `Authorization: Bearer {token}`
 - **Content-Type**: `application/json`
 
-## Configurar el API Gateway
+### Endpoints Tickets CRUD
+- POST `/tickets/create`: Crear nuevo ticket (público)
+- GET `/tickets/list`: Listar todos los tickets (soporte)
+- GET `/tickets/:id`: Obtener detalles de un ticket (soporte)
+- PUT `/tickets/:id/update`: Actualizar estado, asignación y notas (soporte)
+
+### Configurar el API Gateway
 
 Editar `webpages/api-config.js` y actualiza:
 
@@ -155,95 +172,6 @@ const API_CONFIG = {
     BASE_URL: ''
 };
 ```
-
-### Autenticación
-
-#### POST `/auth/login`
-```json
-{
-  "email": "user@example.com",
-  "password": "password123"
-}
-```
-**Respuesta exitosa:**
-```json
-{
-  "success": true,
-  "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "userId": "user123",
-  "email": "user@example.com"
-}
-```
-
-### Tickets CRUD
-
-#### POST `/tickets/create`
-Crear nuevo ticket de soporte.
-```json
-{
-  "fullname": "Juan Pérez",
-  "email": "juan@example.com",
-  "phone": "+57 3001234567",
-  "category": "technical",
-  "priority": "high",
-  "subject": "Error al acceder",
-  "description": "No puedo acceder a mi cuenta...",
-  "attachments": 0,
-  "createdAt": "2024-01-15T10:30:00Z"
-}
-```
-
-#### GET `/tickets/list`
-Listar todos los tickets.
-**Respuesta:**
-```json
-{
-  "success": true,
-  "tickets": [
-    {
-      "id": "TK-001",
-      "fullname": "Juan Pérez",
-      "status": "open",
-      "priority": "high"
-    }
-  ]
-}
-```
-
-#### GET `/tickets/:id`
-Obtener detalles de un ticket específico.
-
-#### PUT `/tickets/:id/update`
-Actualizar estado, asignación y agregar notas.
-```json
-{
-  "status": "in-progress",
-  "assignee": "Carlos López",
-  "notes": "Investigando el problema..."
-}
-```
-
-#### DELETE `/tickets/:id/delete`
-Eliminar un ticket.
-
-
-### Crear API Gateway
-
-**AWS Console → API Gateway → Create API → REST API**
-
-1. **Crear recurso** `/auth`
-   - Crear método POST
-   - Integración Lambda → `login-lambda`
-
-2. **Crear recurso** `/tickets`
-   - POST (crear ticket)
-   - GET (listar tickets)
-
-3. **Habilitar CORS** para todos los métodos
-
-4. **Desplegar** en stage `default`
-
-5. **Copiar URL base** y actualizar `api-config.js`
 
 ## 📝 Notas de Desarrollo
 
@@ -268,5 +196,3 @@ const newTicket = await createTicket(ticketData);
 Brando Yesid Montoya Jaramillo - [linkedin.com/in/brando-montoya](https://www.linkedin.com/in/brando-montoya/)
 
 ---
-**Stack**: HTML5 + CSS3 + Vanilla JS + AWS Lambda + API Gateway + DynamoDB + S3 + Terraform
-
