@@ -6,9 +6,20 @@
     <title>NexaCloud - Centro de Soporte | Panel de Control</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="support-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3/build/jwt-decode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aws-sdk@2/dist/aws-sdk.min.js"></script>
     <script src="../api-config.js"></script>
+    <script src="../auth-cognito.js"></script>
 </head>
 <body>
+    <!-- Verificar autenticación al cargar la página -->
+    <!-- <script>
+        // Si no está autenticado, redirigir al login
+        if (!cognito_isAuthenticated()) {
+            window.location.href = '../login/login.html';
+        }
+    </script> -->
+
     <div id="navbar-container"></div>
 
     <div class="container">
@@ -63,7 +74,7 @@
 
         <!-- PESTAÑAS -->
         <div class="tabs">
-            <button class="tab active" onclick="switchTab('all')">Todos los Tickets</button>
+            <button class="tab active" id="all" onclick="switchTab('all')">Todos los Tickets</button>
             <button class="tab" onclick="switchTab('assigned')">Asignados a Mí</button>
             <button class="tab" onclick="switchTab('urgent')">Urgentes</button>
         </div>
@@ -281,7 +292,6 @@
                     </div>
                     <div class="ticket-actions">
                         <button class="btn btn-sm btn-primary" onclick="viewTicket('${ticket.id}')">👁️ Ver</button>
-                        <button class="btn btn-sm btn-danger" onclick="deleteTicket('${ticket.id}')">🗑️ Borrar</button>
                     </div>
                 </div>
             `).join('');
