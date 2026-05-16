@@ -97,19 +97,20 @@ Cloud-2-Betek-Project/
 
 ### ✅ Página de Inicio (`index.html`)
 - Entrada principal en raíz: `webpages/index.html` (redirige a `webpages/index/index.html`)
-- Hero section con llamada a la acción
+- Sección principal con descripción del sistema
 - Sección de características
-- Cómo funciona (6 pasos)
+- Cómo funciona (6 pasos) orientado al flujo real de atención
 - Estadísticas de rendimiento
-- FAQ con preguntas sobre arquitectura AWS
+- FAQ con preguntas no técnicas para clientes
 - Responsive design (mobile-first)
 
 ### 🔐 Página de Login (`login/login.html`)
 - Autenticación con email y contraseña
-- Integración con Lambda de autenticación
-- Token JWT almacenado en `localStorage`
+- Integración con AWS Cognito
+- Tokens de sesión almacenados en `sessionStorage`
 - Redirección automática a dashboard
 - Recordar email (checkbox)
+- Recuperación de contraseña
 
 ### 📝 Formulario de Tickets (`form/form.html`)
 - Creación de tickets con:
@@ -122,19 +123,19 @@ Cloud-2-Betek-Project/
   - Descripción (max 2000 caracteres)
   - Adjuntos (drag & drop, max 5MB)
 - Validación cliente-side
-- Envío a Lambda via API Gateway
+- Envío vía API Gateway
 - Mensaje de éxito con ID de ticket
+- Acceso público (no requiere login)
 
-### 📊 Dashboard CRUD (`support/support.html`)
+### 📊 Dashboard de Soporte (`support/support.html`)
 **Solo para personal de soporte**
 - Estadísticas en tiempo real (Abiertos, En Progreso, Resueltos, Cerrados)
 - Búsqueda por ID, cliente o asunto
 - Filtros por estado y prioridad
 - Pestañas: Todos, Asignados a mí, Urgentes
-- **Acciones CRUD:**
+- **Acciones disponibles:**
   - 👁️ Ver detalles completos
   - ✏️ Editar estado, asignación y agregar notas
-  - 🗑️ Eliminar tickets
   - ➕ Crear nuevos tickets manualmente
 
 ## Autenticación
